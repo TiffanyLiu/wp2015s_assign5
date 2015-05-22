@@ -14,16 +14,57 @@
       <!-- Large button group -->
       <div class="btn-group">
         <button class="btn btn-default btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
-          Taipei <span class="caret"></span>
+          地區 <span class="caret"></span>
         </button>
         <ul id="dropdown" class="dropdown-menu" role="menu">
-              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Taipei</a></li>
-              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Tainan</a></li>
-              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Hualien</a></li>
-              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Taidong</a></li>
+          <li id=
+"tp" role="presentation"><a role="menuitem" tabindex="-1" href="#">台北市</a></li>
+          <li id=
+"xp" role="presentation"><a role="menuitem" tabindex="-1" href="#">新北市</a></li>
+          <li id=
+"tc" role="presentation"><a role="menuitem" tabindex="-1" href="#">台中市</a></li>
+          <li id=
+"tn" role="presentation"><a role="menuitem" tabindex="-1" href="#">台南市</a></li>
+          <li id=
+"ks" role="presentation"><a role="menuitem" tabindex="-1" href="#">高雄市</a></li>
+          <li id=
+"cl" role="presentation"><a role="menuitem" tabindex="-1" href="#">基隆市</a></li>
+          <li id=
+"ty" role="presentation"><a role="menuitem" tabindex="-1" href="#">桃園市</a></li>
+          <li id=
+"xc" role="presentation"><a role="menuitem" tabindex="-1" href="#">新竹市</a></li>
+          <li id=
+"xcd" role="presentation"><a role="menuitem" tabindex="-1" href="#">新竹縣</a></li>
+          <li id=
+"ml" role="presentation"><a role="menuitem" tabindex="-1" href="#">苗栗縣</a></li>
+          <li id=
+"ch" role="presentation"><a role="menuitem" tabindex="-1" href="#">彰化縣</a></li>
+          <li id=
+"nt" role="presentation"><a role="menuitem" tabindex="-1" href="#">南投縣</a></li>
+          <li id=
+"yl" role="presentation"><a role="menuitem" tabindex="-1" href="#">雲林縣</a></li>
+          <li id=
+"cy" role="presentation"><a role="menuitem" tabindex="-1" href="#">嘉義市</a></li>
+          <li id=
+"cyd" role="presentation"><a role="menuitem" tabindex="-1" href="#">嘉義縣</a></li>
+          <li id=
+"pt" role="presentation"><a role="menuitem" tabindex="-1" href="#">屏東縣</a></li>
+          <li id=
+"il" role="presentation"><a role="menuitem" tabindex="-1" href="#">宜蘭縣</a></li>
+          <li id=
+"hl" role="presentation"><a role="menuitem" tabindex="-1" href="#">花蓮縣</a></li>
+          <li id=
+"tt" role="presentation"><a role="menuitem" tabindex="-1" href="#">台東縣</a></li>
+          <li id=
+"ph" role="presentation"><a role="menuitem" tabindex="-1" href="#">澎湖縣</a></li>
+          <li id=
+"gm" role="presentation"><a role="menuitem" tabindex="-1" href="#">金門縣</a></li>
+          <li id=
+"lc" role="presentation"><a role="menuitem" tabindex="-1" href="#">連江縣</a></li>
+
+
         </ul>
-      </div>
-      <div><span class="temperature">23</span> &#8451;</div>
+      </div>      <div id="temper"><span class="temperature">23</span> &#8451;</div>
     </div>
     <div class="col-xs-6">
       <canvas id="today" width="100" height="100"></canvas>
@@ -42,19 +83,19 @@
             <table class="table">
               <thead>
                 <tr>
-                  <th>5 May 2015</th>
-                  <th>6 May 2015</th>
-                  <th>7 May 2015</th>
+                  <th id="th1">5 May 2015</th>
+                  <th id="th2">6 May 2015</th>
+                  <th id="th3">7 May 2015</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td>17-23 &#8451;</td>
-                  <td>18-26 &#8451;</td>
-                  <td>15-24 &#8451;</td>
+                  <td id="tem1">17-23 &#8451;</td>
+                  <td id="tem2">18-26 &#8451;</td>
+                  <td id="tem3">15-24 &#8451;</td>
                 </tr>
                 <tr>
-                  <td><canvas id="day1" width="64" height="64">Clear</canvas></td>
+                  <td><canvas id="day1" width="64" height="64">Rain</canvas></td>
                   <td><canvas id="day2" width="64" height="64">Mostly Sunny</canvas></td>
                   <td><canvas id="day3" width="64" height="64">Mostly Cloudy</canvas></td>
                 </tr>

@@ -20,6 +20,757 @@ var skycons = new Skycons();
 /*
 Get value from Bootstrap dropdown menu
 */
-$('#dropdown li').on('click', function(){
-    alert($(this).text());
+$('#dropdown #tp').on('click', function(){
+    //alert($(this).text());
+      //$('btn-group button').html($(this).text());
+      $(function() {
+      $.get(
+    "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22taipei%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys",
+     function(response) {
+     function f2c(f) {
+     return parseInt((f-32)*5/9);
+          }
+         console.log(response.query.results.channel.item.forecast);     
+        var forecast = response.query.results.channel.item.forecast;
+         $('.container').empty();
+        for(var k in forecast ) {
+        /*$('.container').append($('<p>').html('date: ' + forecast[k].date + ', temp: ' + f2c(forecast[k].low) + ' - ' + f2c(forecast[k].high) + ', weather: ' + forecast[k].text));*/
+        $('.table #th1').text(forecast[1].date);
+        $('.table #th2').text(forecast[2].date);
+        $('.table #th3').text(forecast[3].date);
+        $('.table #tem1').html(f2c(forecast[1].low)+' - ' + f2c(forecast[1].high) +('&#8451'));
+        $('.table #tem2').html(f2c(forecast[2].low)+' - ' + f2c(forecast[2].high) +('&#8451'));
+        $('.table #tem3').html(f2c(forecast[3].low)+' - ' + f2c(forecast[3].high) +('&#8451'));
+        $('.table #day1').html(forecast[1].text);
+        $('#temper').html(f2c(forecast[0].high)+'&#8451');
+        $('.condition').html(forecast[0].date+':' + forecast[0].text);
+       skycons.set("today", Skycons.RAIN);
+       skycons.set("day1", Skycons.RAIN);
+       skycons.set("day2", Skycons.RAIN);             skycons.set("day3",Skycons.RAIN);
+
+        }
+        }
+      );
+    });
+});
+/*新北*/
+$('#dropdown #xp').on('click', function(){
+    //alert($(this).text());
+      //$('btn-group button').html($(this).text());
+      $(function() {
+      $.get(
+    "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22%E6%96%B0%E5%8C%97%E5%B8%82%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys",
+     function(response) {
+     function f2c(f) {
+     return parseInt((f-32)*5/9);
+          }
+         console.log(response.query.results.channel.item.forecast);     
+        var forecast = response.query.results.channel.item.forecast;
+         $('.container').empty();
+        for(var k in forecast ) {
+        /*$('.container').append($('<p>').html('date: ' + forecast[k].date + ', temp: ' + f2c(forecast[k].low) + ' - ' + f2c(forecast[k].high) + ', weather: ' + forecast[k].text));*/
+        $('.table #th1').text(forecast[1].date);
+        $('.table #th2').text(forecast[2].date);
+        $('.table #th3').text(forecast[3].date);
+        $('.table #tem1').html(f2c(forecast[1].low)+' - ' + f2c(forecast[1].high) +('&#8451'));
+        $('.table #tem2').html(f2c(forecast[2].low)+' - ' + f2c(forecast[2].high) +('&#8451'));
+        $('.table #tem3').html(f2c(forecast[3].low)+' - ' + f2c(forecast[3].high) +('&#8451'));
+        $('.table #day1').html(forecast[k].text);
+        $('#temper').html(f2c(forecast[0].high)+'&#8451');
+        $('.condition').html(forecast[0].date+':' + forecast[0].text);
+       skycons.set("today", Skycons.RAIN);
+       skycons.set("day1", Skycons.RAIN);
+       skycons.set("day2", Skycons.RAIN);             skycons.set("day3",Skycons.RAIN);
+
+        }
+        }
+      );
+    });
+});
+
+/*台中市*/
+
+$('#dropdown #tc').on('click', function(){
+    //alert($(this).text());
+      //$('btn-group button').html($(this).text());
+      $(function() {
+      $.get(
+    "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22%E6%96%B0%E5%8C%97%E5%B8%82%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys",
+     function(response) {
+     function f2c(f) {
+     return parseInt((f-32)*5/9);
+          }
+         console.log(response.query.results.channel.item.forecast);     
+        var forecast = response.query.results.channel.item.forecast;
+         $('.container').empty();
+        for(var k in forecast ) {
+        /*$('.container').append($('<p>').html('date: ' + forecast[k].date + ', temp: ' + f2c(forecast[k].low) + ' - ' + f2c(forecast[k].high) + ', weather: ' + forecast[k].text));*/
+        $('.table #th1').text(forecast[1].date);
+        $('.table #th2').text(forecast[2].date);
+        $('.table #th3').text(forecast[3].date);
+        $('.table #tem1').html(f2c(forecast[1].low)+' - ' + f2c(forecast[1].high) +('&#8451'));
+        $('.table #tem2').html(f2c(forecast[2].low)+' - ' + f2c(forecast[2].high) +('&#8451'));
+        $('.table #tem3').html(f2c(forecast[3].low)+' - ' + f2c(forecast[3].high) +('&#8451'));
+        $('.table #day1').html(forecast[k].text);
+        $('#temper').html(f2c(forecast[0].high)+'&#8451');
+        $('.condition').html(forecast[0].date+':' + forecast[0].text);
+       skycons.set("today", Skycons.RAIN);
+       skycons.set("day1", Skycons.RAIN);
+       skycons.set("day2", Skycons.RAIN); 
+       skycons.set("day3", Skycons.RAIN); 
+        }
+        }
+      );
+    });
+});
+
+/*台南市*/
+
+$('#dropdown #tn').on('click', function(){
+    //alert($(this).text());
+      //$('btn-group button').html($(this).text());
+      $(function() {
+      $.get(
+    "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22%E6%96%B0%E5%8C%97%E5%B8%82%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys",
+     function(response) {
+     function f2c(f) {
+     return parseInt((f-32)*5/9);
+          }
+         console.log(response.query.results.channel.item.forecast);     
+        var forecast = response.query.results.channel.item.forecast;
+         $('.container').empty();
+        for(var k in forecast ) {
+        /*$('.container').append($('<p>').html('date: ' + forecast[k].date + ', temp: ' + f2c(forecast[k].low) + ' - ' + f2c(forecast[k].high) + ', weather: ' + forecast[k].text));*/
+        $('.table #th1').text(forecast[1].date);
+        $('.table #th2').text(forecast[2].date);
+        $('.table #th3').text(forecast[3].date);
+        $('.table #tem1').html(f2c(forecast[1].low)+' - ' + f2c(forecast[1].high) +('&#8451'));
+        $('.table #tem2').html(f2c(forecast[2].low)+' - ' + f2c(forecast[2].high) +('&#8451'));
+        $('.table #tem3').html(f2c(forecast[3].low)+' - ' + f2c(forecast[3].high) +('&#8451'));
+        $('.table #day1').html(forecast[k].text);
+        $('#temper').html(f2c(forecast[0].high)+'&#8451');
+        $('.condition').html(forecast[0].date+':' + forecast[0].text);
+       skycons.set("today", Skycons.RAIN);
+       skycons.set("day1", Skycons.RAIN);
+       skycons.set("day2", Skycons.RAIN); 
+       skycons.set("day3", Skycons.RAIN); 
+        }
+        }
+      );
+    });
+});
+
+/*高雄市*/
+$('#dropdown #ks').on('click', function(){
+    //alert($(this).text());
+      //$('btn-group button').html($(this).text());
+      $(function() {
+      $.get(
+    "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22%E9%AB%98%E9%9B%84%E5%B8%82%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys",
+     function(response) {
+     function f2c(f) {
+     return parseInt((f-32)*5/9);
+          }
+         console.log(response.query.results.channel.item.forecast);     
+        var forecast = response.query.results.channel.item.forecast;
+         $('.container').empty();
+        for(var k in forecast ) {
+        /*$('.container').append($('<p>').html('date: ' + forecast[k].date + ', temp: ' + f2c(forecast[k].low) + ' - ' + f2c(forecast[k].high) + ', weather: ' + forecast[k].text));*/
+        $('.table #th1').text(forecast[1].date);
+        $('.table #th2').text(forecast[2].date);
+        $('.table #th3').text(forecast[3].date);
+        $('.table #tem1').html(f2c(forecast[1].low)+' - ' + f2c(forecast[1].high) +('&#8451'));
+        $('.table #tem2').html(f2c(forecast[2].low)+' - ' + f2c(forecast[2].high) +('&#8451'));
+        $('.table #tem3').html(f2c(forecast[3].low)+' - ' + f2c(forecast[3].high) +('&#8451'));
+        $('.table #day1').html(forecast[k].text);
+        $('#temper').html(f2c(forecast[0].high)+'&#8451');
+        $('.condition').html(forecast[0].date+':' + forecast[0].text);
+skycons.set("today", Skycons.RAIN);
+       skycons.set("day1", Skycons.RAIN);
+       skycons.set("day2", Skycons.RAIN); 
+       skycons.set("day3", Skycons.RAIN); 
+        }
+        }
+      );
+    });
+});
+/*基隆市*/
+$('#dropdown #cl').on('click', function(){
+    //alert($(this).text());
+      //$('btn-group button').html($(this).text());
+      $(function() {
+      $.get(
+    "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22%E5%9F%BA%E9%9A%86%E5%B8%82%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys",
+     function(response) {
+     function f2c(f) {
+     return parseInt((f-32)*5/9);
+          }
+         console.log(response.query.results.channel.item.forecast);     
+        var forecast = response.query.results.channel.item.forecast;
+         $('.container').empty();
+        for(var k in forecast ) {
+        /*$('.container').append($('<p>').html('date: ' + forecast[k].date + ', temp: ' + f2c(forecast[k].low) + ' - ' + f2c(forecast[k].high) + ', weather: ' + forecast[k].text));*/
+        $('.table #th1').text(forecast[1].date);
+        $('.table #th2').text(forecast[2].date);
+        $('.table #th3').text(forecast[3].date);
+        $('.table #tem1').html(f2c(forecast[1].low)+' - ' + f2c(forecast[1].high) +('&#8451'));
+        $('.table #tem2').html(f2c(forecast[2].low)+' - ' + f2c(forecast[2].high) +('&#8451'));
+        $('.table #tem3').html(f2c(forecast[3].low)+' - ' + f2c(forecast[3].high) +('&#8451'));
+        $('.table #day1').html(forecast[k].text);
+        $('#temper').html(f2c(forecast[0].high)+'&#8451');
+        $('.condition').html(forecast[0].date+':' + forecast[0].text);
+skycons.set("today", Skycons.RAIN);
+       skycons.set("day1", Skycons.RAIN);
+       skycons.set("day2", Skycons.RAIN); 
+       skycons.set("day3", Skycons.RAIN); 
+        }
+        }
+      );
+    });
+});
+/*桃園市*/
+$('#dropdown #ty').on('click', function(){
+    //alert($(this).text());
+      //$('btn-group button').html($(this).text());
+      $(function() {
+      $.get(
+    "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22%E6%A1%83%E5%9C%92%E5%8D%80%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys",
+     function(response) {
+     function f2c(f) {
+     return parseInt((f-32)*5/9);
+          }
+         console.log(response.query.results.channel.item.forecast);     
+        var forecast = response.query.results.channel.item.forecast;
+         $('.container').empty();
+        for(var k in forecast ) {
+        /*$('.container').append($('<p>').html('date: ' + forecast[k].date + ', temp: ' + f2c(forecast[k].low) + ' - ' + f2c(forecast[k].high) + ', weather: ' + forecast[k].text));*/
+        $('.table #th1').text(forecast[1].date);
+        $('.table #th2').text(forecast[2].date);
+        $('.table #th3').text(forecast[3].date);
+        $('.table #tem1').html(f2c(forecast[1].low)+' - ' + f2c(forecast[1].high) +('&#8451'));
+        $('.table #tem2').html(f2c(forecast[2].low)+' - ' + f2c(forecast[2].high) +('&#8451'));
+        $('.table #tem3').html(f2c(forecast[3].low)+' - ' + f2c(forecast[3].high) +('&#8451'));
+        $('.table #day1').html(forecast[k].text);
+        $('#temper').html(f2c(forecast[0].high)+'&#8451');
+        $('.condition').html(forecast[0].date+':' + forecast[0].text);
+skycons.set("today", Skycons.RAIN);
+       skycons.set("day1", Skycons.RAIN);
+       skycons.set("day2", Skycons.RAIN); 
+       skycons.set("day3", Skycons.RAIN); 
+        }
+        }
+      );
+    });
+});
+/*新竹市*/
+$('#dropdown #xc').on('click', function(){
+    //alert($(this).text());
+      //$('btn-group button').html($(this).text());
+      $(function() {
+      $.get(
+    "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22%E6%96%B0%E7%AB%B9%E5%B8%82%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys",
+     function(response) {
+     function f2c(f) {
+     return parseInt((f-32)*5/9);
+          }
+         console.log(response.query.results.channel.item.forecast);     
+        var forecast = response.query.results.channel.item.forecast;
+         $('.container').empty();
+        for(var k in forecast ) {
+        /*$('.container').append($('<p>').html('date: ' + forecast[k].date + ', temp: ' + f2c(forecast[k].low) + ' - ' + f2c(forecast[k].high) + ', weather: ' + forecast[k].text));*/
+        $('.table #th1').text(forecast[1].date);
+        $('.table #th2').text(forecast[2].date);
+        $('.table #th3').text(forecast[3].date);
+        $('.table #tem1').html(f2c(forecast[1].low)+' - ' + f2c(forecast[1].high) +('&#8451'));
+        $('.table #tem2').html(f2c(forecast[2].low)+' - ' + f2c(forecast[2].high) +('&#8451'));
+        $('.table #tem3').html(f2c(forecast[3].low)+' - ' + f2c(forecast[3].high) +('&#8451'));
+        $('.table #day1').html(forecast[k].text);
+        $('#temper').html(f2c(forecast[0].high)+'&#8451');
+        $('.condition').html(forecast[0].date+':' + forecast[0].text);
+skycons.set("today", Skycons.RAIN);
+       skycons.set("day1", Skycons.RAIN);
+       skycons.set("day2", Skycons.RAIN); 
+       skycons.set("day3", Skycons.RAIN); 
+        }
+        }
+      );
+    });
+});
+/*新竹縣*/
+$('#dropdown #xcd').on('click', function(){
+    //alert($(this).text());
+      //$('btn-group button').html($(this).text());
+      $(function() {
+      $.get(
+    "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22%E6%96%B0%E7%AB%B9%E7%B8%A3%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys",
+     function(response) {
+     function f2c(f) {
+     return parseInt((f-32)*5/9);
+          }
+         console.log(response.query.results.channel.item.forecast);     
+        var forecast = response.query.results.channel.item.forecast;
+         $('.container').empty();
+        for(var k in forecast ) {
+        /*$('.container').append($('<p>').html('date: ' + forecast[k].date + ', temp: ' + f2c(forecast[k].low) + ' - ' + f2c(forecast[k].high) + ', weather: ' + forecast[k].text));*/
+        $('.table #th1').text(forecast[1].date);
+        $('.table #th2').text(forecast[2].date);
+        $('.table #th3').text(forecast[3].date);
+        $('.table #tem1').html(f2c(forecast[1].low)+' - ' + f2c(forecast[1].high) +('&#8451'));
+        $('.table #tem2').html(f2c(forecast[2].low)+' - ' + f2c(forecast[2].high) +('&#8451'));
+        $('.table #tem3').html(f2c(forecast[3].low)+' - ' + f2c(forecast[3].high) +('&#8451'));
+        $('.table #day1').html(forecast[k].text);
+        $('#temper').html(f2c(forecast[0].high)+'&#8451');
+        $('.condition').html(forecast[0].date+':' + forecast[0].text);
+skycons.set("today", Skycons.RAIN);
+       skycons.set("day1", Skycons.RAIN);
+       skycons.set("day2", Skycons.RAIN); 
+       skycons.set("day3", Skycons.RAIN); 
+        }
+        }
+      );
+    });
+});
+/*苗栗縣*/
+$('#dropdown #ml').on('click', function(){
+    //alert($(this).text());
+      //$('btn-group button').html($(this).text());
+      $(function() {
+      $.get(
+    "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22%E8%8B%97%E6%A0%97%E7%B8%A3%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys",
+     function(response) {
+     function f2c(f) {
+     return parseInt((f-32)*5/9);
+          }
+         console.log(response.query.results.channel.item.forecast);     
+        var forecast = response.query.results.channel.item.forecast;
+         $('.container').empty();
+        for(var k in forecast ) {
+        /*$('.container').append($('<p>').html('date: ' + forecast[k].date + ', temp: ' + f2c(forecast[k].low) + ' - ' + f2c(forecast[k].high) + ', weather: ' + forecast[k].text));*/
+        $('.table #th1').text(forecast[1].date);
+        $('.table #th2').text(forecast[2].date);
+        $('.table #th3').text(forecast[3].date);
+        $('.table #tem1').html(f2c(forecast[1].low)+' - ' + f2c(forecast[1].high) +('&#8451'));
+        $('.table #tem2').html(f2c(forecast[2].low)+' - ' + f2c(forecast[2].high) +('&#8451'));
+        $('.table #tem3').html(f2c(forecast[3].low)+' - ' + f2c(forecast[3].high) +('&#8451'));
+        $('.table #day1').html(forecast[k].text);
+        $('#temper').html(f2c(forecast[0].high)+'&#8451');
+        $('.condition').html(forecast[0].date+':' + forecast[0].text);
+skycons.set("today", Skycons.RAIN);
+       skycons.set("day1", Skycons.RAIN);
+       skycons.set("day2", Skycons.RAIN); 
+       skycons.set("day3", Skycons.RAIN); 
+        }
+        }
+      );
+    });
+});
+/*彰化縣*/
+$('#dropdown #ch').on('click', function(){
+    //alert($(this).text());
+      //$('btn-group button').html($(this).text());
+      $(function() {
+      $.get(
+    "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22%E5%BD%B0%E5%8C%96%E7%B8%A3%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeyss",
+     function(response) {
+     function f2c(f) {
+     return parseInt((f-32)*5/9);
+          }
+         console.log(response.query.results.channel.item.forecast);     
+        var forecast = response.query.results.channel.item.forecast;
+         $('.container').empty();
+        for(var k in forecast ) {
+        /*$('.container').append($('<p>').html('date: ' + forecast[k].date + ', temp: ' + f2c(forecast[k].low) + ' - ' + f2c(forecast[k].high) + ', weather: ' + forecast[k].text));*/
+        $('.table #th1').text(forecast[1].date);
+        $('.table #th2').text(forecast[2].date);
+        $('.table #th3').text(forecast[3].date);
+        $('.table #tem1').html(f2c(forecast[1].low)+' - ' + f2c(forecast[1].high) +('&#8451'));
+        $('.table #tem2').html(f2c(forecast[2].low)+' - ' + f2c(forecast[2].high) +('&#8451'));
+        $('.table #tem3').html(f2c(forecast[3].low)+' - ' + f2c(forecast[3].high) +('&#8451'));
+        $('.table #day1').html(forecast[k].text);
+        $('#temper').html(f2c(forecast[0].high)+'&#8451');
+        $('.condition').html(forecast[0].date+':' + forecast[0].text);
+skycons.set("today", Skycons.RAIN);
+       skycons.set("day1", Skycons.RAIN);
+       skycons.set("day2", Skycons.RAIN); 
+       skycons.set("day3", Skycons.RAIN); 
+        }
+        }
+      );
+    });
+});
+/*南投縣*/
+$('#dropdown #nt').on('click', function(){
+    //alert($(this).text());
+      //$('btn-group button').html($(this).text());
+      $(function() {
+      $.get(
+    "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22%E5%8D%97%E6%8A%95%E7%B8%A3%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys",
+     function(response) {
+     function f2c(f) {
+     return parseInt((f-32)*5/9);
+          }
+         console.log(response.query.results.channel.item.forecast);     
+        var forecast = response.query.results.channel.item.forecast;
+         $('.container').empty();
+        for(var k in forecast ) {
+        /*$('.container').append($('<p>').html('date: ' + forecast[k].date + ', temp: ' + f2c(forecast[k].low) + ' - ' + f2c(forecast[k].high) + ', weather: ' + forecast[k].text));*/
+        $('.table #th1').text(forecast[1].date);
+        $('.table #th2').text(forecast[2].date);
+        $('.table #th3').text(forecast[3].date);
+        $('.table #tem1').html(f2c(forecast[1].low)+' - ' + f2c(forecast[1].high) +('&#8451'));
+        $('.table #tem2').html(f2c(forecast[2].low)+' - ' + f2c(forecast[2].high) +('&#8451'));
+        $('.table #tem3').html(f2c(forecast[3].low)+' - ' + f2c(forecast[3].high) +('&#8451'));
+        $('.table #day1').html(forecast[k].text);
+        $('#temper').html(f2c(forecast[0].high)+'&#8451');
+        $('.condition').html(forecast[0].date+':' + forecast[0].text);
+skycons.set("today", Skycons.RAIN);
+       skycons.set("day1", Skycons.RAIN);
+       skycons.set("day2", Skycons.RAIN); 
+       skycons.set("day3", Skycons.RAIN); 
+        }
+        }
+      );
+    });
+});
+/*雲林縣*/
+$('#dropdown #yl').on('click', function(){
+    //alert($(this).text());
+      //$('btn-group button').html($(this).text());
+      $(function() {
+      $.get(
+    "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22%E9%9B%B2%E6%9E%97%E7%B8%A3%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys",
+     function(response) {
+     function f2c(f) {
+     return parseInt((f-32)*5/9);
+          }
+         console.log(response.query.results.channel.item.forecast);     
+        var forecast = response.query.results.channel.item.forecast;
+         $('.container').empty();
+        for(var k in forecast ) {
+        /*$('.container').append($('<p>').html('date: ' + forecast[k].date + ', temp: ' + f2c(forecast[k].low) + ' - ' + f2c(forecast[k].high) + ', weather: ' + forecast[k].text));*/
+        $('.table #th1').text(forecast[1].date);
+        $('.table #th2').text(forecast[2].date);
+        $('.table #th3').text(forecast[3].date);
+        $('.table #tem1').html(f2c(forecast[1].low)+' - ' + f2c(forecast[1].high) +('&#8451'));
+        $('.table #tem2').html(f2c(forecast[2].low)+' - ' + f2c(forecast[2].high) +('&#8451'));
+        $('.table #tem3').html(f2c(forecast[3].low)+' - ' + f2c(forecast[3].high) +('&#8451'));
+        $('.table #day1').html(forecast[k].text);
+        $('#temper').html(f2c(forecast[0].high)+'&#8451');
+        $('.condition').html(forecast[0].date+':' + forecast[0].text);
+skycons.set("today", Skycons.RAIN);
+       skycons.set("day1", Skycons.RAIN);
+       skycons.set("day2", Skycons.RAIN); 
+       skycons.set("day3", Skycons.RAIN); 
+        }
+        }
+      );
+    });
+});
+/*嘉義市*/
+$('#dropdown #cy').on('click', function(){
+    //alert($(this).text());
+      //$('btn-group button').html($(this).text());
+      $(function() {
+      $.get(
+    "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22%E5%98%89%E7%BE%A9%E5%B8%82%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys",
+     function(response) {
+     function f2c(f) {
+     return parseInt((f-32)*5/9);
+          }
+         console.log(response.query.results.channel.item.forecast);     
+        var forecast = response.query.results.channel.item.forecast;
+         $('.container').empty();
+        for(var k in forecast ) {
+        /*$('.container').append($('<p>').html('date: ' + forecast[k].date + ', temp: ' + f2c(forecast[k].low) + ' - ' + f2c(forecast[k].high) + ', weather: ' + forecast[k].text));*/
+        $('.table #th1').text(forecast[1].date);
+        $('.table #th2').text(forecast[2].date);
+        $('.table #th3').text(forecast[3].date);
+        $('.table #tem1').html(f2c(forecast[1].low)+' - ' + f2c(forecast[1].high) +('&#8451'));
+        $('.table #tem2').html(f2c(forecast[2].low)+' - ' + f2c(forecast[2].high) +('&#8451'));
+        $('.table #tem3').html(f2c(forecast[3].low)+' - ' + f2c(forecast[3].high) +('&#8451'));
+        $('.table #day1').html(forecast[k].text);
+        $('#temper').html(f2c(forecast[0].high)+'&#8451');
+        $('.condition').html(forecast[0].date+':' + forecast[0].text);
+skycons.set("today", Skycons.RAIN);
+       skycons.set("day1", Skycons.RAIN);
+       skycons.set("day2", Skycons.RAIN); 
+       skycons.set("day3", Skycons.RAIN); 
+        }
+        }
+      );
+    });
+});
+/*嘉義縣*/
+$('#dropdown #cyd').on('click', function(){
+    //alert($(this).text());
+      //$('btn-group button').html($(this).text());
+      $(function() {
+      $.get(
+    "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22%E5%98%89%E7%BE%A9%E7%B8%A3%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys",
+     function(response) {
+     function f2c(f) {
+     return parseInt((f-32)*5/9);
+          }
+         console.log(response.query.results.channel.item.forecast);     
+        var forecast = response.query.results.channel.item.forecast;
+         $('.container').empty();
+        for(var k in forecast ) {
+        /*$('.container').append($('<p>').html('date: ' + forecast[k].date + ', temp: ' + f2c(forecast[k].low) + ' - ' + f2c(forecast[k].high) + ', weather: ' + forecast[k].text));*/
+        $('.table #th1').text(forecast[1].date);
+        $('.table #th2').text(forecast[2].date);
+        $('.table #th3').text(forecast[3].date);
+        $('.table #tem1').html(f2c(forecast[1].low)+' - ' + f2c(forecast[1].high) +('&#8451'));
+        $('.table #tem2').html(f2c(forecast[2].low)+' - ' + f2c(forecast[2].high) +('&#8451'));
+        $('.table #tem3').html(f2c(forecast[3].low)+' - ' + f2c(forecast[3].high) +('&#8451'));
+        $('.table #day1').html(forecast[k].text);
+        $('#temper').html(f2c(forecast[0].high)+'&#8451');
+        $('.condition').html(forecast[0].date+':' + forecast[0].text);
+skycons.set("today", Skycons.RAIN);
+       skycons.set("day1", Skycons.RAIN);
+       skycons.set("day2", Skycons.RAIN); 
+       skycons.set("day3", Skycons.RAIN); 
+        }
+        }
+      );
+    });
+});
+/*屏東縣*/
+$('#dropdown #pt').on('click', function(){
+    //alert($(this).text());
+      //$('btn-group button').html($(this).text());
+      $(function() {
+      $.get(
+    "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22%E5%B1%8F%E6%9D%B1%E7%B8%A3%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys",
+     function(response) {
+     function f2c(f) {
+     return parseInt((f-32)*5/9);
+          }
+         console.log(response.query.results.channel.item.forecast);     
+        var forecast = response.query.results.channel.item.forecast;
+         $('.container').empty();
+        for(var k in forecast ) {
+        /*$('.container').append($('<p>').html('date: ' + forecast[k].date + ', temp: ' + f2c(forecast[k].low) + ' - ' + f2c(forecast[k].high) + ', weather: ' + forecast[k].text));*/
+        $('.table #th1').text(forecast[1].date);
+        $('.table #th2').text(forecast[2].date);
+        $('.table #th3').text(forecast[3].date);
+        $('.table #tem1').html(f2c(forecast[1].low)+' - ' + f2c(forecast[1].high) +('&#8451'));
+        $('.table #tem2').html(f2c(forecast[2].low)+' - ' + f2c(forecast[2].high) +('&#8451'));
+        $('.table #tem3').html(f2c(forecast[3].low)+' - ' + f2c(forecast[3].high) +('&#8451'));
+        $('.table #day1').html(forecast[k].text);
+        $('#temper').html(f2c(forecast[0].high)+'&#8451');
+        $('.condition').html(forecast[0].date+':' + forecast[0].text);
+skycons.set("today", Skycons.RAIN);
+       skycons.set("day1", Skycons.RAIN);
+       skycons.set("day2", Skycons.RAIN); 
+       skycons.set("day3", Skycons.RAIN); 
+        }
+        }
+      );
+    });
+});
+/*宜蘭縣*/
+$('#dropdown #il').on('click', function(){
+    //alert($(this).text());
+      //$('btn-group button').html($(this).text());
+      $(function() {
+      $.get(
+    "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22%E5%AE%9C%E8%98%AD%E7%B8%A3%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys",
+     function(response) {
+     function f2c(f) {
+     return parseInt((f-32)*5/9);
+          }
+         console.log(response.query.results.channel.item.forecast);     
+        var forecast = response.query.results.channel.item.forecast;
+         $('.container').empty();
+        for(var k in forecast ) {
+        /*$('.container').append($('<p>').html('date: ' + forecast[k].date + ', temp: ' + f2c(forecast[k].low) + ' - ' + f2c(forecast[k].high) + ', weather: ' + forecast[k].text));*/
+        $('.table #th1').text(forecast[1].date);
+        $('.table #th2').text(forecast[2].date);
+        $('.table #th3').text(forecast[3].date);
+        $('.table #tem1').html(f2c(forecast[1].low)+' - ' + f2c(forecast[1].high) +('&#8451'));
+        $('.table #tem2').html(f2c(forecast[2].low)+' - ' + f2c(forecast[2].high) +('&#8451'));
+        $('.table #tem3').html(f2c(forecast[3].low)+' - ' + f2c(forecast[3].high) +('&#8451'));
+        $('.table #day1').html(forecast[k].text);
+        $('#temper').html(f2c(forecast[0].high)+'&#8451');
+        $('.condition').html(forecast[0].date+':' + forecast[0].text);
+skycons.set("today", Skycons.RAIN);
+       skycons.set("day1", Skycons.RAIN);
+       skycons.set("day2", Skycons.RAIN); 
+       skycons.set("day3", Skycons.RAIN); 
+        }
+        }
+      );
+    });
+});
+/*花蓮縣*/
+
+$('#dropdown #hl').on('click', function(){
+    //alert($(this).text());
+      //$('btn-group button').html($(this).text());
+      $(function() {
+      $.get(
+    "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22%E8%8A%B1%E8%93%AE%E7%B8%A3%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys",
+     function(response) {
+     function f2c(f) {
+     return parseInt((f-32)*5/9);
+          }
+         console.log(response.query.results.channel.item.forecast);     
+        var forecast = response.query.results.channel.item.forecast;
+         $('.container').empty();
+        for(var k in forecast ) {
+        /*$('.container').append($('<p>').html('date: ' + forecast[k].date + ', temp: ' + f2c(forecast[k].low) + ' - ' + f2c(forecast[k].high) + ', weather: ' + forecast[k].text));*/
+        $('.table #th1').text(forecast[1].date);
+        $('.table #th2').text(forecast[2].date);
+        $('.table #th3').text(forecast[3].date);
+        $('.table #tem1').html(f2c(forecast[1].low)+' - ' + f2c(forecast[1].high) +('&#8451'));
+        $('.table #tem2').html(f2c(forecast[2].low)+' - ' + f2c(forecast[2].high) +('&#8451'));
+        $('.table #tem3').html(f2c(forecast[3].low)+' - ' + f2c(forecast[3].high) +('&#8451'));
+        $('.table #day1').html(forecast[k].text);
+        $('#temper').html(f2c(forecast[0].high)+'&#8451');
+        $('.condition').html(forecast[0].date+':' + forecast[0].text);
+skycons.set("today", Skycons.RAIN);
+       skycons.set("day1", Skycons.RAIN);
+       skycons.set("day2", Skycons.RAIN); 
+       skycons.set("day3", Skycons.RAIN); 
+        }
+        }
+      );
+    });
+});
+/*台東縣*/
+$('#dropdown #tt').on('click', function(){
+    //alert($(this).text());
+      //$('btn-group button').html($(this).text());
+      $(function() {
+      $.get(
+    "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22taitung%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys",
+     function(response) {
+     function f2c(f) {
+     return parseInt((f-32)*5/9);
+          }
+         console.log(response.query.results.channel.item.forecast);     
+        var forecast = response.query.results.channel.item.forecast;
+         $('.container').empty();
+        for(var k in forecast ) {
+        /*$('.container').append($('<p>').html('date: ' + forecast[k].date + ', temp: ' + f2c(forecast[k].low) + ' - ' + f2c(forecast[k].high) + ', weather: ' + forecast[k].text));*/
+        $('.table #th1').text(forecast[1].date);
+        $('.table #th2').text(forecast[2].date);
+        $('.table #th3').text(forecast[3].date);
+        $('.table #tem1').html(f2c(forecast[1].low)+' - ' + f2c(forecast[1].high) +('&#8451'));
+        $('.table #tem2').html(f2c(forecast[2].low)+' - ' + f2c(forecast[2].high) +('&#8451'));
+        $('.table #tem3').html(f2c(forecast[3].low)+' - ' + f2c(forecast[3].high) +('&#8451'));
+        $('.table #day1').html(forecast[k].text);
+        $('#temper').html(f2c(forecast[0].high)+'&#8451');
+        $('.condition').html(forecast[0].date+':' + forecast[0].text);
+skycons.set("today", Skycons.RAIN);
+       skycons.set("day1", Skycons.RAIN);
+       skycons.set("day2", Skycons.RAIN); 
+       skycons.set("day3", Skycons.RAIN); 
+        }
+        }
+      );
+    });
+});
+/*澎湖縣*/
+
+$('#dropdown #ph').on('click', function(){
+    //alert($(this).text());
+      //$('btn-group button').html($(this).text());
+      $(function() {
+      $.get(
+    "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22%E6%BE%8E%E6%B9%96%E7%B8%A3%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys",
+     function(response) {
+     function f2c(f) {
+     return parseInt((f-32)*5/9);
+          }
+         console.log(response.query.results.channel.item.forecast);     
+        var forecast = response.query.results.channel.item.forecast;
+         $('.container').empty();
+        for(var k in forecast ) {
+        /*$('.container').append($('<p>').html('date: ' + forecast[k].date + ', temp: ' + f2c(forecast[k].low) + ' - ' + f2c(forecast[k].high) + ', weather: ' + forecast[k].text));*/
+        $('.table #th1').text(forecast[1].date);
+        $('.table #th2').text(forecast[2].date);
+        $('.table #th3').text(forecast[3].date);
+        $('.table #tem1').html(f2c(forecast[1].low)+' - ' + f2c(forecast[1].high) +('&#8451'));
+        $('.table #tem2').html(f2c(forecast[2].low)+' - ' + f2c(forecast[2].high) +('&#8451'));
+        $('.table #tem3').html(f2c(forecast[3].low)+' - ' + f2c(forecast[3].high) +('&#8451'));
+        $('.table #day1').html(forecast[k].text);
+        $('#temper').html(f2c(forecast[0].high)+'&#8451');
+        $('.condition').html(forecast[0].date+':' + forecast[0].text);
+skycons.set("today", Skycons.RAIN);
+       skycons.set("day1", Skycons.RAIN);
+       skycons.set("day2", Skycons.RAIN); 
+       skycons.set("day3", Skycons.RAIN); 
+        }
+        }
+      );
+    });
+});
+/*金門縣*/
+$('#dropdown #gm').on('click', function(){
+    //alert($(this).text());
+      //$('btn-group button').html($(this).text());
+      $(function() {
+      $.get(
+    "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22%E9%87%91%E9%96%80%E7%B8%A3%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys",
+     function(response) {
+     function f2c(f) {
+     return parseInt((f-32)*5/9);
+          }
+         console.log(response.query.results.channel.item.forecast);     
+        var forecast = response.query.results.channel.item.forecast;
+         $('.container').empty();
+        for(var k in forecast ) {
+        /*$('.container').append($('<p>').html('date: ' + forecast[k].date + ', temp: ' + f2c(forecast[k].low) + ' - ' + f2c(forecast[k].high) + ', weather: ' + forecast[k].text));*/
+        $('.table #th1').text(forecast[1].date);
+        $('.table #th2').text(forecast[2].date);
+        $('.table #th3').text(forecast[3].date);
+        $('.table #tem1').html(f2c(forecast[1].low)+' - ' + f2c(forecast[1].high) +('&#8451'));
+        $('.table #tem2').html(f2c(forecast[2].low)+' - ' + f2c(forecast[2].high) +('&#8451'));
+        $('.table #tem3').html(f2c(forecast[3].low)+' - ' + f2c(forecast[3].high) +('&#8451'));
+        $('.table #day1').html(forecast[k].text);
+        $('#temper').html(f2c(forecast[0].high)+'&#8451');
+        $('.condition').html(forecast[0].date+':' + forecast[0].text);
+skycons.set("today", Skycons.RAIN);
+       skycons.set("day1", Skycons.RAIN);
+       skycons.set("day2", Skycons.RAIN); 
+       skycons.set("day3", Skycons.RAIN); 
+        }
+        }
+      );
+    });
+});
+/*連江縣*/
+$('#dropdown #lc').on('click', function(){
+    //alert($(this).text());
+      //$('btn-group button').html($(this).text());
+      $(function() {
+      $.get(
+    "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22%E9%80%A3%E6%B1%9F%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys",
+     function(response) {
+     function f2c(f) {
+     return parseInt((f-32)*5/9);
+          }
+         console.log(response.query.results.channel.item.forecast);     
+        var forecast = response.query.results.channel.item.forecast;
+         $('.container').empty();
+        for(var k in forecast ) {
+        /*$('.container').append($('<p>').html('date: ' + forecast[k].date + ', temp: ' + f2c(forecast[k].low) + ' - ' + f2c(forecast[k].high) + ', weather: ' + forecast[k].text));*/
+        $('.table #th1').text(forecast[1].date);
+        $('.table #th2').text(forecast[2].date);
+        $('.table #th3').text(forecast[3].date);
+        $('.table #tem1').html(f2c(forecast[1].low)+' - ' + f2c(forecast[1].high) +('&#8451'));
+        $('.table #tem2').html(f2c(forecast[2].low)+' - ' + f2c(forecast[2].high) +('&#8451'));
+        $('.table #tem3').html(f2c(forecast[3].low)+' - ' + f2c(forecast[3].high) +('&#8451'));
+        $('.table #day1').html(forecast[k].text);
+        $('#temper').html(f2c(forecast[0].high)+'&#8451');
+        $('.condition').html(forecast[0].date+':' + forecast[0].text);
+skycons.set("today", Skycons.RAIN);
+       skycons.set("day1", Skycons.RAIN);
+       skycons.set("day2", Skycons.RAIN); 
+       skycons.set("day3", Skycons.RAIN); 
+        }
+        }
+      );
+    });
 });
